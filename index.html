@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coraline Mania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #8e44ad;
+            --text-color: #e1e1e1;
+            --button-color: #e94560;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin: 0;
+    letter-spacing: -1px;
+        }
+
+        h2 {
+            font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-style: italic;
+        }
+
+        h3 {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+        .movie-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .movie-poster {
+            flex: 1;
+            max-width: 400px;
+            margin-right: 40px;
+        }
+
+        .movie-poster img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(142, 68, 173, 0.6);
+        }
+
+        .movie-description {
+            flex: 2;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--button-color);
+            color: var(--text-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #d63851;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .author-note, .fun-fact, #character-quiz {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        .decoration {
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            color: var(--accent-color);
+            z-index: 0;
+        }
+
+        .decoration-left {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .decoration-right {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
+        }
+
+        .quiz-question {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quiz-option {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+        }
+
+        .quiz-option:hover {
+            background-color: #9b59b6;
+            transform: translateY(-2px);
+        }
+
+        #quiz-result {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 20px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            margin-top: 40px;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .movie-info {
+                flex-direction: column;
+            }
+
+            .movie-poster {
+                margin-right: 0;
+                margin-bottom: 20px;
+                max-width: 100%;
+            }
+
+            .decoration {
+                font-size: 4rem;
+            }
+
+            .quiz-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="emoji">🌀</span>Coraline Mania<span class="emoji">🌀</span></h1>
+            <h2>"Be careful what you wish for"</h2>
+        </header>
+
+        <main>
+            <section class="movie-info">
+                <div class="decoration decoration-left">✧</div>
+                <div class="movie-poster">
+                    <img src="https://gonewiththetwins.com/wp-content/uploads/2009/02/coraline_tall.jpg" alt="Coraline movie poster">
+                </div>
+                <div class="movie-description">
+                    <h3>A Thrilling Adventure</h3>
+                    <p>
+                        Wandering her rambling old house in her boring new town, Coraline discovers a hidden door to a fantasy
+                        version of her life. In order to stay in the fantasy, she must make a <strong>frighteningly real sacrifice</strong>.
+                    </p>
+                    <a href="https://www.netflix.com/jp-en/title/70105599" class="cta-button" target="_blank">Watch Now <span class="emoji">🎬</span></a>
+                </div>
+                <div class="decoration decoration-right">✧</div>
+            </section>
+
+            <section class="author-note">
+                <h3><span class="emoji">✍️</span> A Note from the author, Neil Gaiman:</h3>
+                <blockquote>
+                    "I wanted it to have a girl as a heroine, and I wanted it to be refreshingly creepy. I started to write a story about a
+                    girl named Coraline. I thought that the story would be five or ten pages long. The story itself had other plans....It's the strangest book I've written, it took the longest time to write, and it's the book I'm proudest of."
+                </blockquote>
+            </section>
+
+            <section class="fun-fact">
+                <h3><span class="emoji">💡</span> Fun Fact</h3>
+                <p>Did you know? It took over 3 years to make the stop-motion animation for Coraline, with a team of 450 people creating everything by hand!</p>
+            </section>
+
+            <section class="interactive-section">
+                <div id="character-quiz">
+                    <h3><span class="emoji">🔮</span> Which Coraline Character Are You? <span class="emoji">🔮</span></h3>
+                    <p>Take our quick quiz to find out!</p>
+                    <button id="start-quiz" class="cta-button">Start Quiz</button>
+                    <div id="quiz-questions">
+                        <div class="quiz-question" id="question1">
+                            <h4>What's your favorite color?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-character="coraline">Blue</div>
+                                <div class="quiz-option" data-character="other-mother">Black</div>
+                                <div class="quiz-option" data-character="wybie">Green</div>
+                                <div class="quiz-option" data-character="cat">Gray</div>
+                            </div>
+                        </div>
+                        <div class="quiz-question" id="question2">
+                            <h4>Choose a personality trait:</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-character="coraline">Curious</div>
+                                <div class="quiz-option" data-character="other-mother">Manipulative</div>
+                                <div class="quiz-option" data-character="wybie">Inventive</div>
+                                <div class="quiz-option" data-character="cat">Mysterious</div>
+                            </div>
+                        </div>
+                        <div class="quiz-question" id="question3">
+                            <h4>Pick a hobby:</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-character="coraline">Exploring</div>
+                                <div class="quiz-option" data-character="other-mother">Sewing</div>
+                                <div class="quiz-option" data-character="wybie">Tinkering</div>
+                                <div class="quiz-option" data-character="cat">Observing</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="quiz-result"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>This page was built by Sofia Bhargava</p>
+        </footer>
+    </div>
+
+    <script>
+        const startQuizButton = document.getElementById('start-quiz');
+        const quizQuestions = document.getElementById('quiz-questions');
+        const quizResult = document.getElementById('quiz-result');
+        const questions = document.querySelectorAll('.quiz-question');
+        let currentQuestion = 0;
+        let characterScores = {
+            coraline: 0,
+            'other-mother': 0,
+            wybie: 0,
+            cat: 0
+        };
+
+        startQuizButton.addEventListener('click', startQuiz);
+
+        function startQuiz() {
+            startQuizButton.style.display = 'none';
+            showQuestion(currentQuestion);
+        }
+
+        function showQuestion(index) {
+            questions.forEach(q => q.style.display = 'none');
+            if (index < questions.length) {
+                questions[index].style.display = 'block';
+            } else {
+                showResult();
+            }
+        }
+
+        quizQuestions.addEventListener('click', (event) => {
+            if (event.target.classList.contains('quiz-option')) {
+                const character = event.target.getAttribute('data-character');
+                characterScores[character]++;
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        function showResult() {
+            const winner = Object.keys(characterScores).reduce((a, b) => characterScores[a] > characterScores[b] ? a : b);
+            const characters = {
+                coraline: "Coraline",
+                'other-mother': "The Other Mother",
+                wybie: "Wybie",
+                cat: "The Cat"
+            };
+            quizResult.innerHTML = `<p>You are most like: <strong>${characters[winner]}!</strong> 🎭</p>`;
+            quizResult.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
